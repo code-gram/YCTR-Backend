@@ -1,0 +1,79 @@
+package com.yash.trainingctr.models;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@Data
+public class TrainingCtr {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(initialValue = 1, name = "id",allocationSize=50)
+	private long id;
+
+	@Column
+	private long emp_id;
+
+	@NotBlank
+	@Size(max=100)
+	private String name;
+	
+	@NotBlank
+	@Email
+	@Size(max=100)
+	private String email_id;
+
+	@Column
+	private String grade;
+
+	@Column
+	private String resource_type;
+	
+	@Column
+	private String training_stack;
+
+	private String training_name;
+
+	private String purpose_to_attend_training;
+
+	private long training_duration;
+
+	private String training_start_date;
+
+	private String training_end_date;
+
+	private String current_skilss;
+
+	private String upgraded_skills;
+
+	private String pre_assessment_score;
+
+	private String final_score;
+
+	private String current_allocation;
+
+	private String project;
+	
+	private String current_location;
+
+	private String status;
+
+	private String feedback;
+
+}

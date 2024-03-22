@@ -1,0 +1,5 @@
+package com.yash.trainingctr.config;
+
+public class SpringBatchConfig {
+
+}

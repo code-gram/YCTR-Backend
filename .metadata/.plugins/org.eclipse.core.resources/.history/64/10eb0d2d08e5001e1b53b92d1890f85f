@@ -1,0 +1,64 @@
+package com.yash.trainingctr.config;
+
+import javax.persistence.EntityManagerFactory;
+
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JpaItemWriter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+import com.yash.trainingctr.models.TrainingCtr;
+
+@Configuration
+@EnableBatchProcessing
+public class BatchConfig {
+	
+	@Autowired
+	private JobBuilderFactory jobBuilderFactory;
+	
+	@Autowired
+	private StepBuilderFactory stepBuilderFactory;
+	
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
+
+	@Bean
+	public ItemReader<TrainingCtr> itemReader() {
+		return new ExcelItemReader<>(new ClassPathResource("your_excel_file.xlsx"));
+	}
+
+	@Bean
+	public ItemProcessor<TrainingCtr, TrainingCtr> itemProcessor() {
+		return item -> item;
+// No processing needed in this example
+	}
+
+	@Bean
+	public ItemWriter<TrainingCtr> itemWriter() {
+		JpaItemWriter<TrainingCtr> itemWriter = new JpaItemWriter<>();
+		itemWriter.setEntityManagerFactory(entityManagerFactory);
+		return itemWriter;
+	}
+
+	@Bean
+	public Step excelFileToDatabaseStep() {
+		return stepBuilderFactory.get("excelFileToDatabaseStep").<TrainingCtr, TrainingCtr>chunk(10)
+				.reader(itemReader()).processor(itemProcessor()).writer(itemWriter()).build();
+	}
+
+	@Bean
+	public Job excelFileToDatabaseJob() {
+		return jobBuilderFactory.get("excelFileToDatabaseJob").incrementer(new RunIdIncrementer())
+				.flow(excelFileToDatabaseStep()).end().build();
+	}
+}

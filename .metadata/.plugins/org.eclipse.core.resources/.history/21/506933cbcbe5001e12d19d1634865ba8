@@ -1,0 +1,366 @@
+package com.yash.trainingctr.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tutorials")
+public class Tutorial {
+
+	@Id
+	private long id;
+
+	
+	private long emp_id;
+
+	
+	private String name;
+	
+
+	private String email_id;
+
+	private String grade;
+
+	
+	private String resource_type;
+	
+	private String training_stack;
+
+	private String training_name;
+
+	private String purpose_to_attend_training;
+
+	private long training_duration;
+
+	private String training_start_date;
+
+	private String training_end_date;
+
+	private String current_skilss;
+
+	private String upgraded_skills;
+
+	private String pre_assessment_score;
+
+	private String final_score;
+
+	private String current_allocation;
+
+	private String project;
+	
+	private String current_location;
+
+	private String status;
+
+	private String feedback;
+	
+	
+
+  public Tutorial() {
+
+  }
+
+
+
+public long getId() {
+	return id;
+}
+
+
+
+public void setId(long id) {
+	this.id = id;
+}
+
+
+
+public long getEmp_id() {
+	return emp_id;
+}
+
+
+
+public void setEmp_id(long emp_id) {
+	this.emp_id = emp_id;
+}
+
+
+
+public String getName() {
+	return name;
+}
+
+
+
+public void setName(String name) {
+	this.name = name;
+}
+
+
+
+public String getEmail_id() {
+	return email_id;
+}
+
+
+
+public void setEmail_id(String email_id) {
+	this.email_id = email_id;
+}
+
+
+
+public String getGrade() {
+	return grade;
+}
+
+
+
+public void setGrade(String grade) {
+	this.grade = grade;
+}
+
+
+
+public String getResource_type() {
+	return resource_type;
+}
+
+
+
+public void setResource_type(String resource_type) {
+	this.resource_type = resource_type;
+}
+
+
+
+public String getTraining_stack() {
+	return training_stack;
+}
+
+
+
+public void setTraining_stack(String training_stack) {
+	this.training_stack = training_stack;
+}
+
+
+
+public String getTraining_name() {
+	return training_name;
+}
+
+
+
+public void setTraining_name(String training_name) {
+	this.training_name = training_name;
+}
+
+
+
+public String getPurpose_to_attend_training() {
+	return purpose_to_attend_training;
+}
+
+
+
+public void setPurpose_to_attend_training(String purpose_to_attend_training) {
+	this.purpose_to_attend_training = purpose_to_attend_training;
+}
+
+
+
+public long getTraining_duration() {
+	return training_duration;
+}
+
+
+
+public void setTraining_duration(long training_duration) {
+	this.training_duration = training_duration;
+}
+
+
+
+public String getTraining_start_date() {
+	return training_start_date;
+}
+
+
+
+public void setTraining_start_date(String training_start_date) {
+	this.training_start_date = training_start_date;
+}
+
+
+
+public String getTraining_end_date() {
+	return training_end_date;
+}
+
+
+
+public void setTraining_end_date(String training_end_date) {
+	this.training_end_date = training_end_date;
+}
+
+
+
+public String getCurrent_skilss() {
+	return current_skilss;
+}
+
+
+
+public void setCurrent_skilss(String current_skilss) {
+	this.current_skilss = current_skilss;
+}
+
+
+
+public String getUpgraded_skills() {
+	return upgraded_skills;
+}
+
+
+
+public void setUpgraded_skills(String upgraded_skills) {
+	this.upgraded_skills = upgraded_skills;
+}
+
+
+
+public String getPre_assessment_score() {
+	return pre_assessment_score;
+}
+
+
+
+public void setPre_assessment_score(String pre_assessment_score) {
+	this.pre_assessment_score = pre_assessment_score;
+}
+
+
+
+public String getFinal_score() {
+	return final_score;
+}
+
+
+
+public void setFinal_score(String final_score) {
+	this.final_score = final_score;
+}
+
+
+
+public String getCurrent_allocation() {
+	return current_allocation;
+}
+
+
+
+public void setCurrent_allocation(String current_allocation) {
+	this.current_allocation = current_allocation;
+}
+
+
+
+public String getProject() {
+	return project;
+}
+
+
+
+public void setProject(String project) {
+	this.project = project;
+}
+
+
+
+public String getCurrent_location() {
+	return current_location;
+}
+
+
+
+public void setCurrent_location(String current_location) {
+	this.current_location = current_location;
+}
+
+
+
+public String getStatus() {
+	return status;
+}
+
+
+
+public void setStatus(String status) {
+	this.status = status;
+}
+
+
+
+public String getFeedback() {
+	return feedback;
+}
+
+
+
+public void setFeedback(String feedback) {
+	this.feedback = feedback;
+}
+
+
+
+@Override
+public String toString() {
+	return "Tutorial [id=" + id + ", emp_id=" + emp_id + ", name=" + name + ", email_id=" + email_id + ", grade="
+			+ grade + ", resource_type=" + resource_type + ", training_stack=" + training_stack + ", training_name="
+			+ training_name + ", purpose_to_attend_training=" + purpose_to_attend_training + ", training_duration="
+			+ training_duration + ", training_start_date=" + training_start_date + ", training_end_date="
+			+ training_end_date + ", current_skilss=" + current_skilss + ", upgraded_skills=" + upgraded_skills
+			+ ", pre_assessment_score=" + pre_assessment_score + ", final_score=" + final_score
+			+ ", current_allocation=" + current_allocation + ", project=" + project + ", current_location="
+			+ current_location + ", status=" + status + ", feedback=" + feedback + "]";
+}
+
+
+
+public Tutorial(long id, long emp_id, String name, String email_id, String grade, String resource_type,
+		String training_stack, String training_name, String purpose_to_attend_training, long training_duration,
+		String training_start_date, String training_end_date, String current_skilss, String upgraded_skills,
+		String pre_assessment_score, String final_score, String current_allocation, String project,
+		String current_location, String status, String feedback) {
+	super();
+	this.id = id;
+	this.emp_id = emp_id;
+	this.name = name;
+	this.email_id = email_id;
+	this.grade = grade;
+	this.resource_type = resource_type;
+	this.training_stack = training_stack;
+	this.training_name = training_name;
+	this.purpose_to_attend_training = purpose_to_attend_training;
+	this.training_duration = training_duration;
+	this.training_start_date = training_start_date;
+	this.training_end_date = training_end_date;
+	this.current_skilss = current_skilss;
+	this.upgraded_skills = upgraded_skills;
+	this.pre_assessment_score = pre_assessment_score;
+	this.final_score = final_score;
+	this.current_allocation = current_allocation;
+	this.project = project;
+	this.current_location = current_location;
+	this.status = status;
+	this.feedback = feedback;
+}
+  
+  
+
+
+}
+

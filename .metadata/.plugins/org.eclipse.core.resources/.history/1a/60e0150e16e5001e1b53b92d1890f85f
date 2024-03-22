@@ -1,0 +1,5 @@
+package com.yash.trainingctr.exception;
+
+public class FileUploadExceptionAdvice {
+
+}

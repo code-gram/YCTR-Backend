@@ -1,0 +1,73 @@
+package com.yash.trainingctr.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tutorials")
+public class Tutorial {
+
+	@Id
+	@Column(name = "id")
+	private long s_no;
+
+	@Column(name = "emp_id")
+	private String empId;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "email_id")
+	private String EmailId;
+
+	public Tutorial() {
+
+	}
+
+	public long getS_no() {
+		return s_no;
+	}
+
+	public void setS_no(long s_no) {
+		this.s_no = s_no;
+	}
+
+	public String getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isEmailId() {
+		return EmailId;
+	}
+
+	public void setEmailId(String emailId) {
+		EmailId = emailId;
+	}
+
+	public Tutorial(String empId, String name, String emailId) {
+		super();
+		this.empId = empId;
+		this.name = name;
+		EmailId = emailId;
+	}
+
+	@Override
+	public String toString() {
+		return "Tutorial [s_no=" + s_no + ", empId=" + empId + ", name=" + name + ", EmailId=" + EmailId + "]";
+	}
+
+}

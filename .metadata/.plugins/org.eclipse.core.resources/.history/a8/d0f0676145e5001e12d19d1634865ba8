@@ -1,0 +1,39 @@
+package com.yash.trainingctr.services;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.yash.trainingctr.helper.ExcelHelper;
+import com.yash.trainingctr.models.TrainingCtr;
+import com.yash.trainingctr.models.Tutorial;
+import com.yash.trainingctr.repo.TrainingCtrRepo;
+import com.yash.trainingctr.repo.TutorialRepository;
+
+
+@Service
+public class ExcelService {
+	
+  
+  @Autowired
+  TrainingCtrRepo trainingRepository;
+  
+  @Autowired
+  TutorialRepository tutorialRepository;
+
+  public void save(MultipartFile file) {
+    try {
+      List<Tutorial> tutorial = ExcelHelper.excelToTutorials(file.getInputStream());
+      tutorialRepository.saveAll(tutorial);
+    } catch (IOException e) {
+      throw new RuntimeException("fail to store excel data: " + e.getMessage());
+    }
+  }
+
+  public List<TrainingCtr> getAllTrainingCtr() {
+    return repository.findAll();
+  }
+}
