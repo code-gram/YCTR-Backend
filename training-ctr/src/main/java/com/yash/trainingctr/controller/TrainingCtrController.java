@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,21 @@ public class TrainingCtrController {
 	public ResponseEntity<List<TrainingCtr>> getAllTutorials() {
 		try {
 			List<TrainingCtr> ctrdatas = tarinngCtr.getAllTrainingCtr();
+
+			if (ctrdatas.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+
+			return new ResponseEntity<>(ctrdatas, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/{year}")
+	public ResponseEntity<List<TrainingCtr>> getDataByYear(@PathVariable("year") String year) {
+		try {
+			List<TrainingCtr> ctrdatas = tarinngCtr.getDataByYear(year);
 
 			if (ctrdatas.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

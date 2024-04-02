@@ -10,6 +10,7 @@ public interface TrainingCtrI {
 	
 	public void save(MultipartFile file);
 	List<TrainingCtr> getAllTrainingCtr();
+	List<TrainingCtr> getDataByYear(String year);
 	
 
 }
